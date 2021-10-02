@@ -25,3 +25,5 @@ Utility.AddEventListener('btnSubmitSecurity','click',(e)=>{
     })                                                                                                                    
     .catch(errorMessage=>alert(errorMessage));                                                           
 });
+Do.setTransactionUtility();
+Do.setAvailableSecuritiesForBuyOrSell();

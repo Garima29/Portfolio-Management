@@ -150,6 +150,45 @@ class Do{
         }
     
       }
+
+      static buyOrSellSecurity(txType){
+        const secIndex= Number(Utility.GetElementById('AvailableSecurities').value);
+        let availableQty=Number(SecurityData[secIndex].Quantity);
+        let qtyToBuyOrSell=Number(Utility.GetElementById('txQuantity').value);
+        let livePrice=Number(SecurityData[secIndex].showLivePrice().slice(0,-1));
+        let newQty=0;
+        let margin=qtyToBuyOrSell*livePrice;
+        let balanceOk=false;
+    
+        if(txType=='sell'){
+          if(qtyToBuyOrSell<=availableQty){
+            newQty=availableQty-qtyToBuyOrSell;
+            balanceOk=setAvailableBalance(-margin);
+          }
+        }else{
+    
+          newQty=availableQty+qtyToBuyOrSell;
+          balanceOk=setAvailableBalance(margin);
+        }
+        if(balanceOk){
+          SecurityData[secIndex].Quantity=newQty;
+          this.DisplaySecurities();
+        }else{
+          alert('Illegal transaction');
+        }
+    
+      }
+      static setTransactionUtility(){
+        Utility.ToggleVisibility('jmbTransact'); 
+        Utility.AddEventListener('txSec','click',(e)=>{
+          Utility.ToggleVisibility('jmbTransact');                                           
+          e.preventDefault();
+        });
+    
+    
+        Utility.AddEventListener('txBuy','click',(e)=>{this.buyOrSellSecurity('buy'),e.preventDefault();});
+        Utility.AddEventListener('txSell','click',(e)=>{this.buyOrSellSecurity('sell'),e.preventDefault();});
+      }
 }  
 
 
