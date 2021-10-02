@@ -8,3 +8,4 @@ Utility.SetElementValue('lblTitle',Title);
 Utility.SetElementValue('lblTitleDescription',Description);
 
 setInterval(()=>Do.DisplaySecurities(), 1000);
+Do.DisplayRecommendations();
