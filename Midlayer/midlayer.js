@@ -46,6 +46,32 @@ const PassRecommendationToForm=(Data, Event)=>{
 const GetTop=([first,,,,...remaining])=>{
     return [first,...remaining];
   };
+
+  const ValidateSecurity=(securityToBeAdded)=>{
+    let IsValid=false;
+    let ValidationMessage='Valid';
+    let Name=securityToBeAdded.Name;
+    let Price=securityToBeAdded.Price;
+    let Quantity=securityToBeAdded.Quantity;
+  
+    if(Name=='NA' || Price=='NA'||Quantity=='NA'){
+  
+      ValidationMessage='Name,Price or Quantity cannot be empty';
+      return {IsValid,ValidationMessage};
+    }else if(SecurityData.filter(i=>i.Name==securityToBeAdded.Name).length>0){/* 6. Find the appropriate array method to replace map to make this work*/
+  
+      ValidationMessage='Security already exists';
+      return {IsValid,ValidationMessage};
+    }
+    else if(!setAvailableBalance(Number(securityToBeAdded.Quantity)*Number(securityToBeAdded.Price))){
+  
+      ValidationMessage='You are running low on balance';
+      return {IsValid,ValidationMessage};
+    }else{
+      IsValid=true;
+      return {IsValid,ValidationMessage};
+    }
+  };
 class Do{
     static setAvailableBalance(){
        setAvailableBalance();
@@ -93,6 +119,37 @@ class Do{
         Utility.AddEventListener(i.id,'click',ShowRecommendedSecurityDetails.bind(this,RecomendedSecurities[i.id]));
         });
     }
+    static AddSecurity(securityToBeAdded){
+        return new Promise((resolve,reject)=>{
+    
+          setTimeout(()=>{
+    
+            const ValidationData=ValidateSecurity(securityToBeAdded);
+            if(ValidationData.IsValid)
+            {
+              console.log('Adding your security...');
+              SecurityData.push(new Security(securityToBeAdded));
+    
+              this.DisplaySecurities();
+    
+              this.setAvailableSecuritiesForBuyOrSell();
+              resolve('Security added sucessfully');    
+            }else{
+              reject(ValidationData.ValidationMessage);
+            }  
+    
+          },3000);
+        });     
+      }
+
+      static setAvailableSecuritiesForBuyOrSell(){
+        const secDpDn=Utility.GetElementById('AvailableSecurities');
+        if(secDpDn){
+          const secDpdnHtml= [...SecurityData].map((sec,index)=>`<option value="${index}">${sec.Name}</option>`);
+          secDpDn.innerHTML=secDpdnHtml;
+        }
+    
+      }
 }  
 
 

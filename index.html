@@ -16,8 +16,28 @@
             <div class="row">
               <div class="col-md-8">
                 <p class="h5">Your Holdings
+                    <span id='txSec' class='badge badge-info'>Transact</span>
                 </p>
                 <hr />
+                <div class="jumbotron" id='jmbTransact'>
+                    <form id='txSecurity'>
+                      <div class="form-group">
+                        <label for="Name">Security Name</label>
+                        <select class="form-control" id="AvailableSecurities"></select>
+                        <small id="SecurityNameHelp" class="form-text text-muted"> Select one security</small>
+                      </div>
+        
+                      <div class="form-group">
+                        <label for="Quantity">Quantity</label>
+                        <input type="number" class="form-control" id="txQuantity" aria-describedby="QuantityHelp"
+                          placeholder="Enter Purchased Quantity">
+                        <small id="txQuantityHelp" class="form-text text-muted"> E.g. 500</small>
+                      </div>
+        
+                      <button class="btn btn-success" id='txBuy'>Buy</button> <button id='txSell'
+                        class="btn btn-danger">Sell</button>
+                    </form>
+                  </div>
                 <table class="table table-striped" id="tblSecurities"></table>
                 <div class="row">
                     <div class="col-md-6">
