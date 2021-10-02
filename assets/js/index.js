@@ -9,3 +9,4 @@ Utility.SetElementValue('lblTitleDescription',Description);
 
 setInterval(()=>Do.DisplaySecurities(), 1000);
 Do.DisplayRecommendations();
+Do.setAvailableBalance();

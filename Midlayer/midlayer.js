@@ -27,10 +27,31 @@ const PassRecommendationToForm=(Data, Event)=>{
     Utility.AddEventListener('btnAddReco','click',PassRecommendationToForm.bind(this, recommendedScrip));
   };
 
+  const setAvailableBalance=(quote=0,amount=26000)=>{
+    const balance=Utility.GetElementById('balanceDisplay');
+    if(quote==0){
+      balance.innerText=amount;       
+    }else{
+      let previousBalance=Number(balance.innerText);
+      let UpcomingBalance=previousBalance-quote;
+      if(UpcomingBalance>0){
+        balance.innerText=Utility.RoundOff(UpcomingBalance,2);
+        return true;
+      }else{
+        return false;
+      }
+    } 
+  };  
+
 const GetTop=([first,,,,...remaining])=>{
     return [first,...remaining];
   };
 class Do{
+    static setAvailableBalance(){
+       setAvailableBalance();
+    }
+    
+
     static DisplaySecurities()
     {
         let SecuritiesTableControl= Utility.GetElementById('tblSecurities');
