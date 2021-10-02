@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Portfolio Management</title>
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <script src='assets/bootstrap/js/bootstrap.min.js'></script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="jumbotron">
+              <h1 class="display-3"><label id='lblTitle'></label></h1>
+              <p class="lead"><label id='lblTitleDescription'></label></p>
+            </div>
+            <div class="row">
+              <div class="col-md-8">
+                <p class="h5">Your Holdings
+                </p>
+                <hr />
+                <table class="table table-striped" id="tblSecurities"></table>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="h5">Top Recommendations</p>
+                        <hr />
+                        <ul class="list-group" id="ulrecommendations">
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="h5">Details</p>
+                        <hr />
+                        <div id='divSecurityDetails'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <footer>
+        <script src="index.js" type="module"></script>
+    </footer>
+</html>
