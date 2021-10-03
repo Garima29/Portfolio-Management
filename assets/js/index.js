@@ -27,3 +27,4 @@ Utility.AddEventListener('btnSubmitSecurity','click',(e)=>{
 });
 Do.setTransactionUtility();
 Do.setAvailableSecuritiesForBuyOrSell();
+Do.enableFormResetWhenRequired(SecurityForm);

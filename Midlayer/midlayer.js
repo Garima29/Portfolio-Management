@@ -76,7 +76,12 @@ class Do{
     static setAvailableBalance(){
        setAvailableBalance();
     }
-    
+    static enableFormResetWhenRequired(SecurityForm){
+        Utility.AddEventListener('btnResetSecurity','click',(e)=>{
+          e.preventDefault();    
+          Utility.ResetFormValues(SecurityForm);                                                     
+        });  
+      }
 
     static DisplaySecurities()
     {
