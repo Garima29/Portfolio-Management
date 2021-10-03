@@ -5,14 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Portfolio Management</title>
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/index.css">
         <script src='assets/js/bootstrap.min.js'></script>
     </head>
     <body>
-        <div class="container-fluid">
-            <div class="jumbotron">
-              <h1 class="display-3"><label id='lblTitle'></label></h1>
-              <p class="lead"><label id='lblTitleDescription'></label></p>
-            </div>
+        <div class="container">
+            <div class="row">
+                <div class="jumbotron col-md-12">
+                <h1 class="display-3"><label id='lblTitle'></label></h1>
+                <p class="lead"><label id='lblTitleDescription'></label></p>
+                </div>
+            </div>  
             <div class="row">
               <div class="col-md-8">
                 <p class="h5">Your Holdings
@@ -38,7 +41,7 @@
                         class="btn btn-danger">Sell</button>
                     </form>
                   </div>
-                <table class="table table-striped" id="tblSecurities"></table>
+                <table class="table table-striped table-responsive" id="tblSecurities"></table>
                 <div class="row">
                     <div class="col-md-6">
                         <p class="h5">Top Recommendations</p>
